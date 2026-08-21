@@ -1,0 +1,32 @@
+{
+  "migration_receipt": {
+    "receipt_id": "rec_mig_c0_to_c1_000001",
+    "source_grammar_version": "C_0",
+    "target_grammar_version": "C_1",
+    "migration_timestamp": "2026-08-21T15:50:00Z",
+    "justification_hash": "sha256:4f83b2a59e1d88a2957f8841a123f4b68e987110190562e847c118742b87431e",
+    "justification_text": "Constitutional Amendment C_0 -> C_1: Reclassifying root axioms CC-1..11 from legacy formulation (consciousness/Gödel language) to native Open Frontier anti-totalization physics (Procedural Saturation != Ontological Closure) and scale-homologous functorial projections (F_s) with full ancestry preservation.",
+    "reclassification_map": {
+      "CC-1": "Valid",
+      "CC-2": "Valid",
+      "CC-3": "Valid",
+      "CC-4": "ReParented",
+      "CC-5": "ReParented",
+      "CC-6": "ReParented",
+      "CC-7": "ReParented",
+      "CC-8": "Valid",
+      "CC-9": "Valid",
+      "CC-10": "ReParented",
+      "CC-11": "ReParented",
+      "CL-4": "EmpiricalHypothesis",
+      "CL-5": "EmpiricalHypothesis",
+      "CL-7": "EmpiricalHypothesis",
+      "CL-10": "Valid"
+    },
+    "ancestry_preservation_attestation": {
+      "no_ancestral_erasure": true,
+      "no_warrant_inflation": true,
+      "preserved_derivation_count": 3269
+    }
+  }
+}

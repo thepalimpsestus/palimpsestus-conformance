@@ -25,22 +25,8 @@
       "epistemic_tier": 3,
       "one_sentence_summary": "Logical relations preserve scale recurrence.",
       "irreducible_claim": "Logical structure must reflect scale-preserving projections.",
-      "corollaries": ["LC-1"],
+      "corollaries": [],
       "irreducibility_proof": "Requires simultaneous truth of scale recurrence and logical context.",
-      "governing_grammar_version": "C_1"
-    },
-    {
-      "id": "LC-1",
-      "title": "Logical Conceptualization of Scale",
-      "cell": "LC",
-      "derivation_type": "LayerFold",
-      "folds_from": ["CC-1", "CL-1"],
-      "derivational_state": "IRREDUCIBLE",
-      "epistemic_tier": 2,
-      "one_sentence_summary": "Minimal logical conceptual basis for carrying Conceptual layer forward.",
-      "irreducible_claim": "Logical concepts must provide scale-preserving execution bounds.",
-      "corollaries": ["LL-1"],
-      "irreducibility_proof": "Layer fold over CC-1 and CL-1.",
       "governing_grammar_version": "C_1"
     }
   ],
@@ -52,25 +38,11 @@
       "above_parent_id": "CC-1",
       "derivational_state": "IRREDUCIBLE",
       "target_entry_id": "CL-1",
-      "justification_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "justification_text": "Foundation Cross Receipt: CC-1 crossed with CC-1 generating CL-1",
+      "justification_hash": "sha256:f613ed8c35a8f47f2b1d3d526e0e91129ecbd098c1edb017b2b73dbb108ff4b8",
       "governing_grammar_version": "C_1",
       "timestamp": "2026-08-21T14:30:00Z"
     }
   ],
-  "fold_receipts": [
-    {
-      "receipt_id": "rec_fold_000000000001",
-      "target_cell": "LC",
-      "target_concept_id": "LC-1",
-      "antecedent_layer": "Conceptual_Layer",
-      "minimal_support_set": ["CC-1", "CL-1"],
-      "input_coverage_map": {
-        "CC-1": "supported",
-        "CL-1": "supported"
-      },
-      "justification_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "governing_grammar_version": "C_1",
-      "timestamp": "2026-08-21T14:30:00Z"
-    }
-  ]
+  "fold_receipts": []
 }
