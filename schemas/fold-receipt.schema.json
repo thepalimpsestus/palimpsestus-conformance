@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://palimpsestus.org/schemas/fold-receipt.schema.json",
+  "title": "Foundation Fold Receipt Schema",
+  "description": "Schema for an audited Foundation Fold Receipt certifying output soundness and input coverage.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "target_cell",
+    "target_concept_id",
+    "antecedent_layer",
+    "minimal_support_set",
+    "input_coverage_map",
+    "justification_hash",
+    "governing_grammar_version",
+    "timestamp"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^rec_fold_[a-f0-9]{12,64}$"
+    },
+    "target_cell": {
+      "type": "string",
+      "enum": ["CC", "LC", "PC", "IC"]
+    },
+    "target_concept_id": {
+      "type": "string"
+    },
+    "antecedent_layer": {
+      "type": "string",
+      "enum": ["Work_W", "Conceptual_Layer", "Logical_Layer", "Physical_Layer"]
+    },
+    "minimal_support_set": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "input_coverage_map": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["supported", "subsumed", "domain_irrelevant", "open_frontier"]
+      }
+    },
+    "justification_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "governing_grammar_version": {
+      "type": "string",
+      "pattern": "^C_[0-9]+$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://palimpsestus.org/schemas/migration-receipt.schema.json",
+  "title": "Ancestry-Preserving Constitutional Migration Receipt Schema",
+  "description": "Schema certifying constitutional grammar amendment C_n -> C_n+1 reclassification of descendants.",
+  "type": "object",
+  "required": [
+    "migration_id",
+    "source_grammar_version",
+    "target_grammar_version",
+    "reclassification_map",
+    "justification_hash",
+    "timestamp"
+  ],
+  "properties": {
+    "migration_id": {
+      "type": "string",
+      "pattern": "^rec_mig_[a-f0-9]{12,64}$"
+    },
+    "source_grammar_version": {
+      "type": "string",
+      "pattern": "^C_[0-9]+$"
+    },
+    "target_grammar_version": {
+      "type": "string",
+      "pattern": "^C_[0-9]+$"
+    },
+    "reclassification_map": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["Valid", "ReParented", "EmpiricalHypothesis", "Superseded", "Invalid"]
+      }
+    },
+    "justification_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

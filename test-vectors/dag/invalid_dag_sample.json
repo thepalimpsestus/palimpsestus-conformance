@@ -1,0 +1,50 @@
+{
+  "governing_grammar_version": "C_1",
+  "nodes": [
+    {
+      "id": "IC-1",
+      "title": "Implementation Capability Before Physical Layer",
+      "cell": "IC",
+      "derivation_type": "LayerFold",
+      "folds_from": ["PC-1"],
+      "derivational_state": "IRREDUCIBLE",
+      "epistemic_tier": 1,
+      "one_sentence_summary": "Topological sequence violation: IC authored before PP/PI.",
+      "irreducible_claim": "Violates topological sequence PP -> PI -> IC -> IL -> IP -> II.",
+      "corollaries": [],
+      "irreducibility_proof": "Invalid derivation sequence.",
+      "governing_grammar_version": "C_1"
+    },
+    {
+      "id": "PP-1",
+      "title": "Physical Constraint",
+      "cell": "PP",
+      "derivation_type": "CellCrossing",
+      "derives_from": ["NON_EXISTENT_PARENT"],
+      "applies_to": ["LP-1"],
+      "derivational_state": "IRREDUCIBLE",
+      "epistemic_tier": 3,
+      "one_sentence_summary": "Dangling parent ID reference.",
+      "irreducible_claim": "References parent ID that does not exist in corpus.",
+      "corollaries": [],
+      "irreducibility_proof": "Dangling reference.",
+      "governing_grammar_version": "C_1"
+    }
+  ],
+  "cross_receipts": [],
+  "fold_receipts": [
+    {
+      "receipt_id": "rec_fold_invalid_001",
+      "target_cell": "IC",
+      "target_concept_id": "IC-1",
+      "antecedent_layer": "Physical_Layer",
+      "minimal_support_set": ["PC-1"],
+      "input_coverage_map": {
+        "PC-1": "supported"
+      },
+      "justification_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "governing_grammar_version": "C_1",
+      "timestamp": "2026-08-21T14:30:00Z"
+    }
+  ]
+}
