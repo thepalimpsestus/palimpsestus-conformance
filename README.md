@@ -1,5 +1,9 @@
 # Palimpsestus Conformance Verification Suite (`palimpsestus-conformance`)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Target Spec](https://img.shields.io/badge/Spec-v1.0.2-blue)](https://github.com/thepalimpsestus/palimpsestus-spec)
+[![Suite Version](https://img.shields.io/badge/Version-1.0.1-green)](https://github.com/thepalimpsestus/palimpsestus-conformance/releases/tag/v1.0.1)
+
 **Classification:** Public Reference Verification Suite  
 **Target Specification:** [palimpsestus-spec](https://github.com/thepalimpsestus/palimpsestus-spec) (v1.0.2)  
 **Suite Version:** `1.0.1`  
@@ -96,3 +100,9 @@ python3 harnesses/test_runtime_intent_harness.py
 ```bash
 python3 benchmarks/reproducibility/heuristic_consistency_benchmark.py --sample-size 20
 ```
+
+---
+
+## Citation & Zenodo Metadata
+
+If you utilize this verification suite, please cite as defined in [CITATION.cff](CITATION.cff) and [.zenodo.json](.zenodo.json).
