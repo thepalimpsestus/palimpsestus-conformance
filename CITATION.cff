@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you utilize this verification suite, please cite it as below."
+title: "Palimpsestus Conformance Verification Suite"
+version: "1.0.0"
+authors:
+  - family-names: "Weber"
+    given-names: "Stephen"
+    affiliation: "1791 Technologies LLC"
+date-released: 2026-08-21
+url: "https://github.com/thepalimpsestus/palimpsestus-conformance"
+license: MIT
+keywords:
+  - Software Verification
+  - Structural Invariants
+  - Provenance Audit
+  - Conformance Testing
