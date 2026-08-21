@@ -1,0 +1,25 @@
+{
+  "migration_receipt": {
+    "migration_id": "rec_mig_000000000001",
+    "source_grammar_version": "C_1",
+    "target_grammar_version": "C_2",
+    "reclassification_map": {
+      "PP-1": "Valid",
+      "PP-2": "ReParented",
+      "PI-5": "EmpiricalHypothesis",
+      "IL-12": "Superseded",
+      "IP-3": "Invalid"
+    },
+    "justification_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "timestamp": "2026-08-21T14:30:00Z"
+  },
+  "audit_summary": {
+    "total_descendants_evaluated": 5,
+    "valid_count": 1,
+    "reparented_count": 1,
+    "empirical_hypothesis_count": 1,
+    "superseded_count": 1,
+    "invalid_count": 1,
+    "historical_erasure_detected": false
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://palimpsestus.org/schemas/cross-receipt.schema.json",
+  "title": "Foundation Cross Receipt Schema",
+  "description": "Schema for an audited Foundation Cross Receipt certifying candidate pair evaluation.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "cell",
+    "left_parent_id",
+    "above_parent_id",
+    "derivational_state",
+    "justification_hash",
+    "governing_grammar_version",
+    "timestamp"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^rec_cross_[a-f0-9]{12,64}$"
+    },
+    "cell": {
+      "type": "string",
+      "enum": ["CL", "CP", "CI", "LL", "LP", "LI", "PL", "PP", "PI", "IL", "IP", "II"]
+    },
+    "left_parent_id": {
+      "type": "string"
+    },
+    "above_parent_id": {
+      "type": "string"
+    },
+    "derivational_state": {
+      "type": "string",
+      "enum": ["IRREDUCIBLE", "SUBSUMED", "BARREN"]
+    },
+    "target_entry_id": {
+      "type": "string"
+    },
+    "justification_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "governing_grammar_version": {
+      "type": "string",
+      "pattern": "^C_[0-9]+$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

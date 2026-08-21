@@ -1,0 +1,5 @@
+spec_repository: palimpsestus-spec
+target_commit: e6f084778de14204e97ef61b8fdd0195727b02b0
+governing_constitution: C_n
+schema_version: 1.0.0
+governing_invariants: [UniversalInvariant, NonInflationaryWarrant, EpistemicMetaInvariant, OpenFrontier]
