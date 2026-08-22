@@ -1,7 +1,7 @@
 {
   "title": "Palimpsestus Conformance Surface: Machine-Checkable Reference Verification Suite",
   "upload_type": "software",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Reference conformance verification suite for the Palimpsestus Specification. Implements machine-checkable structural DAG invariant validation (8 invariants), constitutional migration proofs (C0 -> C1), Zero-Theater intent receipt & crash recovery test harnesses, live 3,269-entry Markdown corpus verification, and deterministic classifier consistency benchmarks.",
   "creators": [
     {

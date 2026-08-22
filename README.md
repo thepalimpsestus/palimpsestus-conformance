@@ -1,12 +1,12 @@
 # Palimpsestus Conformance Verification Suite (`palimpsestus-conformance`)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Target Spec](https://img.shields.io/badge/Spec-v1.0.6-blue)](https://github.com/thepalimpsestus/palimpsestus-spec)
-[![Suite Version](https://img.shields.io/badge/Version-1.0.5-green)](https://github.com/thepalimpsestus/palimpsestus-conformance/releases/tag/v1.0.5)
+[![Target Spec](https://img.shields.io/badge/Spec-v1.0.7-blue)](https://github.com/thepalimpsestus/palimpsestus-spec)
+[![Suite Version](https://img.shields.io/badge/Version-1.0.6-green)](https://github.com/thepalimpsestus/palimpsestus-conformance/releases/tag/v1.0.6)
 
 **Classification:** Public Reference Verification Suite  
-**Target Specification:** [palimpsestus-spec](https://github.com/thepalimpsestus/palimpsestus-spec) (v1.0.6)  
-**Suite Version:** `1.0.5`  
+**Target Specification:** [palimpsestus-spec](https://github.com/thepalimpsestus/palimpsestus-spec) (v1.0.7)  
+**Suite Version:** `1.0.6`  
 **Pinned Constitution:** `C_1`  
 **License:** [MIT License](LICENSE)  
 
