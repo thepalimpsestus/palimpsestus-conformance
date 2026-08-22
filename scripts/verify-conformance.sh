@@ -18,13 +18,39 @@ echo "Pinned Spec        : $(cat "$BASE_DIR/SPEC_REF" | tr '\n' ' ')"
 echo ""
 
 if [ "$SPEC_COMMIT" != "$PINNED_TARGET" ] && [ "$1" != "--allow-uncommitted-head" ]; then
-  echo "WARNING: spec_commit ($SPEC_COMMIT) does not equal SPEC_REF target_commit ($PINNED_TARGET)."
-  echo "Executing live verification against working tree..."
+  echo "ERROR: Spec commit ($SPEC_COMMIT) does not equal SPEC_REF target_commit ($PINNED_TARGET)."
+  echo "Release verification requires exact commit alignment. Exiting failure (use --allow-uncommitted-head for dev)."
+  exit 1
 fi
 
 echo "======================================================================"
 echo "               PALIMPSESTUS NORMATIVE CONFORMANCE                     "
 echo "======================================================================"
+
+echo "[0/6] Verifying Schema Hashes & Commit Pin Integrity..."
+python3 -c '
+import sys, hashlib, glob
+
+base_dir = "'"$BASE_DIR"'"
+with open(f"{base_dir}/SPEC_REF", "r") as f:
+    spec_ref = f.read()
+
+schemas = {
+    "cross_receipt": f"{base_dir}/schemas/cross-receipt.schema.json",
+    "fold_receipt": f"{base_dir}/schemas/fold-receipt.schema.json",
+    "migration_receipt": f"{base_dir}/schemas/migration-receipt.schema.json",
+    "node": f"{base_dir}/schemas/node.schema.json"
+}
+
+for name, path in schemas.items():
+    with open(path, "rb") as f:
+        h = "sha256:" + hashlib.sha256(f.read()).hexdigest()
+    if h not in spec_ref:
+        print(f"ERROR: Schema hash mismatch for {name}! Computed {h} not found in SPEC_REF.")
+        sys.exit(1)
+
+print("SUCCESS: All 4 receipt schemas match SPEC_REF sha256 hashes byte-for-byte.")
+'
 
 echo "[1/6] Running Structural Invariant Validator (Reference Fixture)..."
 python3 "$BASE_DIR/validators/verify_dag_conformance.py" --fixture "$BASE_DIR/test-vectors/dag/valid_dag_sample.json"

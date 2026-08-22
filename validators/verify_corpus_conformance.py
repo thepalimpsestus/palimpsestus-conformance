@@ -76,8 +76,8 @@ def parse_markdown_corpus(spec_dir):
                             })
                     
             # Parse explicit Epistemic Tier if present in body
-            tier_match = re.search(r'Epistemic Tier:\s*Tier\s*([1-5])', entry_body, re.IGNORECASE)
-            epistemic_tier = int(tier_match.group(1)) if tier_match else (2 if derivation_type in ["AntecedentRoot", "LayerFold"] else 3)
+            tier_match = re.search(r'Epistemic Tier.*?:?\s*\*?\*?\s*Tier\s*([1-5])', entry_body, re.IGNORECASE)
+            epistemic_tier = int(tier_match.group(1)) if tier_match else None
 
             nodes[entry_id] = {
                 "id": entry_id,
@@ -106,6 +106,12 @@ def validate_live_corpus(nodes):
     errors = []
     warnings = []
     
+    # Pre-compute canonical_text_digest for all nodes
+    for node_id, node in nodes.items():
+        node["canonical_text_digest"] = compute_canonical_text_digest(node["title"] + " " + node.get("body", ""))
+        if not node.get("explicit_tier_declared"):
+            errors.append(f"[{node_id}] Mandatory Epistemic Tier Declaration Missing Violation.")
+
     # 1. Structural Order & Reference Binding Integrity
     for node_id, node in nodes.items():
         cell = node["cell"]
@@ -114,7 +120,6 @@ def validate_live_corpus(nodes):
             continue
             
         c_idx = CELL_TOPOLOGICAL_INDEX[cell]
-        node["canonical_text_digest"] = compute_canonical_text_digest(node["title"] + " " + node.get("body", ""))
 
         for ref in node.get("parent_refs", []):
             p_id = ref["id"]
@@ -131,7 +136,10 @@ def validate_live_corpus(nodes):
                             f"[{node_id} in {cell}] Topological Order Violation: Parent [{p_id} in {p_cell}] "
                             f"comes AFTER child in authorship sequence!"
                         )
-                # Universal Reference Binding Integrity: Verify title match
+                # Universal Reference Witness Enforcement: Verify target digest presence and title witness
+                if not p_node.get("canonical_text_digest"):
+                    errors.append(f"[{node_id}] Missing Parent Digest Witness Error for target parent '{p_id}'.")
+                
                 if expected_title and p_node["title"]:
                     clean_expected = re.sub(r'[^\w\s]', '', expected_title).strip().lower()
                     clean_actual = re.sub(r'[^\w\s]', '', p_node["title"]).strip().lower()
