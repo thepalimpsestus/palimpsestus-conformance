@@ -49,16 +49,31 @@ def parse_markdown_corpus(spec_dir):
             entry_body = content[start_pos:end_pos]
             
             parents = []
+            parent_refs = []
             derivation_type = "CellCrossing"
             if cell_code in ["CC", "LC", "PC", "IC"]:
                 derivation_type = "LayerFold" if cell_code != "CC" else "AntecedentRoot"
                 
             for line in entry_body.splitlines():
-                if any(kw in line for kw in ["Derives From:", "Folds From:", "Applies To:", "Parents:", "Derived From:"]):
-                    found_ids = re.findall(r'\b([A-Z]{2}-\d+)\b', line)
-                    for fid in found_ids:
-                        if fid != entry_id and fid not in parents:
-                            parents.append(fid)
+                ref_class = "IllustrativeMention"
+                if any(kw in line for kw in ["Derives From:", "Folds From:"]):
+                    ref_class = "NormativeAncestry"
+                elif any(kw in line for kw in ["Applies To:", "Parents:", "Derived From:"]):
+                    ref_class = "NormativeSupport"
+                elif "Corollary" in line or "See:" in line:
+                    ref_class = "CorollaryCrossReference"
+
+                if ref_class != "IllustrativeMention" or any(kw in line for kw in ["Derives From:", "Folds From:", "Applies To:", "Parents:", "Derived From:"]):
+                    found = re.findall(r'\b([A-Z]{2}-\d+)(?:\s*\((.*?)\))?', line)
+                    for fid, exp_title in found:
+                        if fid != entry_id:
+                            if fid not in parents:
+                                parents.append(fid)
+                            parent_refs.append({
+                                "id": fid,
+                                "class": ref_class,
+                                "expected_title": exp_title.strip() if exp_title else None
+                            })
                     
             nodes[entry_id] = {
                 "id": entry_id,
@@ -66,16 +81,25 @@ def parse_markdown_corpus(spec_dir):
                 "cell": cell_code,
                 "derivation_type": derivation_type,
                 "parents": parents,
+                "parent_refs": parent_refs,
+                "body": entry_body,
                 "epistemic_tier": 2 if derivation_type in ["AntecedentRoot", "LayerFold"] else 3
             }
                 
     return nodes, files
 
+import hashlib
+
+def compute_semantic_digest(text):
+    """Computes canonicalized sha256 semantic digest of normative text, stripping formatting."""
+    clean = re.sub(r'[\`\*\_#\-\s]+', ' ', text).strip().lower()
+    return "sha256:" + hashlib.sha256(clean.encode("utf-8")).hexdigest()
+
 def validate_live_corpus(nodes):
     errors = []
     warnings = []
     
-    # 1. Structural Order & Reference Integrity
+    # 1. Structural Order & Reference Binding Integrity
     for node_id, node in nodes.items():
         cell = node["cell"]
         if cell not in CELL_TOPOLOGICAL_INDEX:
@@ -83,9 +107,16 @@ def validate_live_corpus(nodes):
             continue
             
         c_idx = CELL_TOPOLOGICAL_INDEX[cell]
-        for p_id in node["parents"]:
+        node["semantic_digest"] = compute_semantic_digest(node["title"] + " " + node.get("body", ""))
+
+        for ref in node.get("parent_refs", []):
+            p_id = ref["id"]
+            ref_class = ref["class"]
+            expected_title = ref.get("expected_title")
+
             if p_id in nodes:
-                p_cell = nodes[p_id]["cell"]
+                p_node = nodes[p_id]
+                p_cell = p_node["cell"]
                 if p_cell in CELL_TOPOLOGICAL_INDEX:
                     p_idx = CELL_TOPOLOGICAL_INDEX[p_cell]
                     if p_idx > c_idx:
@@ -93,9 +124,21 @@ def validate_live_corpus(nodes):
                             f"[{node_id} in {cell}] Topological Order Violation: Parent [{p_id} in {p_cell}] "
                             f"comes AFTER child in authorship sequence!"
                         )
+                # Reference Binding Integrity: Verify title match if explicit title was cited in parent reference
+                if expected_title and p_node["title"]:
+                    clean_expected = re.sub(r'[^\w\s]', '', expected_title).strip().lower()
+                    clean_actual = re.sub(r'[^\w\s]', '', p_node["title"]).strip().lower()
+                    if clean_expected not in clean_actual and clean_actual not in clean_expected:
+                        errors.append(
+                            f"[{node_id}] Reference Binding Integrity Error: Cited parent '{p_id}' with expected title "
+                            f"'{expected_title}', but target '{p_id}' actual title is '{p_node['title']}'."
+                        )
             else:
-                # Reference Integrity
-                warnings.append(f"[{node_id}] Unresolved parent reference '{p_id}' in corpus.")
+                # Reference Integrity based on reference class
+                if ref_class in ["NormativeAncestry", "NormativeSupport"]:
+                    warnings.append(f"[{node_id}] Unresolved {ref_class} parent reference '{p_id}' in corpus.")
+                else:
+                    warnings.append(f"[{node_id}] Unresolved {ref_class} cross-reference '{p_id}' in corpus.")
                 
     # 2. Acyclic Graph Check
     visited = {}
@@ -144,5 +187,5 @@ def main():
             print(f"INFO: {len(warnings)} unlinked parent references noted (open frontier bounds).")
         sys.exit(0)
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()

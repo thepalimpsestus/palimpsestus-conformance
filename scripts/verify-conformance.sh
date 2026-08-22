@@ -26,8 +26,10 @@ echo "[3/6] Verifying C0 -> C1 Constitutional Migration Proof..."
 python3 "$BASE_DIR/validators/verify_dag_conformance.py" --migration "$BASE_DIR/test-vectors/migration/c0_to_c1_constitutional_migration_proof.json"
 
 echo ""
-echo "[4/6] Running Runtime Intent & Partition Crash Recovery Harness..."
+echo "[4/6] Running Behavioral Test Harnesses..."
 python3 "$BASE_DIR/harnesses/test_runtime_intent_harness.py"
+python3 "$BASE_DIR/harnesses/test_accountable_dissolution_harness.py"
+python3 "$BASE_DIR/harnesses/test_co_valid_divergence_harness.py"
 
 echo ""
 echo "======================================================================"

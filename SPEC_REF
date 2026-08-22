@@ -1,11 +1,11 @@
 spec_repository: palimpsestus-spec
-spec_version: v1.0.7
-target_commit: d9a1dca
+spec_version: v1.1.0
+target_commit: 02f74a2
 governing_constitution: C_1
-schema_version: 1.0.0
+schema_version: 1.1.0
 governing_invariants: [UniversalInvariant, NonInflationaryWarrant, EpistemicMetaInvariant, OpenFrontier]
 schema_hashes:
-  cross_receipt: sha256:707ee0b810b5766fff016cc65b0b4a2dd571e23c8149fa9372c242c2009fcfea
-  fold_receipt: sha256:44765210155f29e462186541581c361f3d2229780cbdd257be30df1610dfd7b3
-  migration_receipt: sha256:2d2f6462f9c539e803b125567fbe517a4721ddb523259d063b32d3404e111d53
+  cross_receipt: sha256:8ab72b491bf1fba8ab83edf9e8553b963105e18cd22717cc9ef3ac5691bf0cb4
+  fold_receipt: sha256:5cb7de49f6d234cc5052e28024518066c7657db978861994a88fd32d411c654a
+  migration_receipt: sha256:ce20a9fbcd7ed2499778c9faedc00ae84646a7156fa274c7df037fb435952e02
   node: sha256:2e49da1767544fdd27a4573fe73c5809d1c3940831b9de29a6f7e215a191e945

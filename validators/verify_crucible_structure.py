@@ -150,8 +150,9 @@ def main():
         deps = meta.get("constitutional_dependencies", [])
         if isinstance(deps, str):
             deps = [deps]
+        VALID_CELL_PREFIXES = ("CC-", "CL-", "CP-", "CI-", "LC-", "LL-", "LP-", "LI-", "PC-", "PL-", "PP-", "PI-", "IC-", "IL-", "IP-", "II-", "CONSTITUTIONAL_SPEC")
         for dep in deps:
-            if not dep.startswith("CC-") and not dep.startswith("CL-") and not dep.startswith("CONSTITUTIONAL_SPEC"):
+            if not any(dep.startswith(prefix) for prefix in VALID_CELL_PREFIXES):
                 errors.append(f"[{rel_path}] Invalid constitutional dependency reference '{dep}'.")
 
     if errors:
