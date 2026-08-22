@@ -10,24 +10,32 @@
       "epistemic_tier": 2,
       "one_sentence_summary": "A system is a system is a system; projections are scale-preserving.",
       "irreducible_claim": "Scale-preserving functorial projections govern cross-scale transitions.",
-      "corollaries": ["CL-1"],
+      "corollaries": [
+        "CL-1"
+      ],
       "irreducibility_proof": "Extracted via Fold from antecedent work W.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:aa9196cc0cb43bb1655af182f3e39804c941ef688c3ccc6e1fad6ee0220e3606"
     },
     {
       "id": "CL-1",
       "title": "Logical Relation Isomorphism",
       "cell": "CL",
       "derivation_type": "CellCrossing",
-      "derives_from": ["CC-1"],
-      "applies_to": ["CC-1"],
+      "derives_from": [
+        "CC-1"
+      ],
+      "applies_to": [
+        "CC-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 3,
       "one_sentence_summary": "Logical relations preserve scale recurrence.",
       "irreducible_claim": "Logical structure must reflect scale-preserving projections.",
       "corollaries": [],
       "irreducibility_proof": "Requires simultaneous truth of scale recurrence and logical context.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:cd81f7cbf6fb1b111d34afe11f630bc6a7381b310a16faff253b75b6e9ac5fc6"
     }
   ],
   "cross_receipts": [
@@ -38,10 +46,16 @@
       "above_parent_id": "CC-1",
       "derivational_state": "IRREDUCIBLE",
       "target_entry_id": "CL-1",
-      "justification_text": "Foundation Cross Receipt: CC-1 crossed with CC-1 generating CL-1",
       "justification_hash": "sha256:f613ed8c35a8f47f2b1d3d526e0e91129ecbd098c1edb017b2b73dbb108ff4b8",
       "governing_grammar_version": "C_1",
-      "timestamp": "2026-08-21T14:30:00Z"
+      "timestamp": "2026-08-21T14:30:00Z",
+      "parent_witnesses": {
+        "CC-1": {
+          "expected_title": "Scale Recurrence",
+          "canonical_text_digest": "sha256:aa9196cc0cb43bb1655af182f3e39804c941ef688c3ccc6e1fad6ee0220e3606",
+          "canonicalization_version": "palimpsestus-normative-v1"
+        }
+      }
     }
   ],
   "fold_receipts": []

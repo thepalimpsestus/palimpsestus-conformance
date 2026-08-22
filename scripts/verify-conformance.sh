@@ -56,6 +56,15 @@ echo "[1/6] Running Structural Invariant Validator (Reference Fixture)..."
 python3 "$BASE_DIR/validators/verify_dag_conformance.py" --fixture "$BASE_DIR/test-vectors/dag/valid_dag_sample.json"
 
 echo ""
+echo "[1b/6] Testing Negative Mutation Vector (Corrupted Parent Witness Digest)..."
+if python3 "$BASE_DIR/validators/verify_dag_conformance.py" --fixture "$BASE_DIR/test-vectors/dag/invalid_witness_digest_sample.json" > /dev/null 2>&1; then
+  echo "ERROR: Negative mutation vector with corrupted parent witness digest passed unexpectedly!"
+  exit 1
+else
+  echo "SUCCESS: Negative mutation vector correctly rejected corrupted parent witness digest with non-zero exit status."
+fi
+
+echo ""
 echo "[2/6] Running Live 3,269-Entry Markdown Corpus Conformance Scan..."
 python3 "$BASE_DIR/validators/verify_corpus_conformance.py" --spec-dir "$BASE_DIR/../palimpsestus-spec"
 

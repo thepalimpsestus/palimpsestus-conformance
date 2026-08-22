@@ -14,9 +14,12 @@
       "epistemic_tier": 2,
       "one_sentence_summary": "A system is a system is a system; projections are scale-preserving.",
       "irreducible_claim": "Scale-preserving functorial projections govern cross-scale transitions.",
-      "corollaries": ["CL-1"],
+      "corollaries": [
+        "CL-1"
+      ],
       "irreducibility_proof": "Extracted via Fold from antecedent work W.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:aa9196cc0cb43bb1655af182f3e39804c941ef688c3ccc6e1fad6ee0220e3606"
     },
     {
       "id": "CC-2",
@@ -27,171 +30,248 @@
       "epistemic_tier": 2,
       "one_sentence_summary": "All is process. Everything is dynamic.",
       "irreducible_claim": "Matrix generation breathes through alternating Basis Compression and Novel Differentiation.",
-      "corollaries": ["CL-2"],
+      "corollaries": [
+        "CL-2"
+      ],
       "irreducibility_proof": "Root process axiom.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:9b76f16e33f9064ca51de2ca9b88221a0193a5eaaf65f27d7036de128d273d56"
     },
     {
       "id": "CL-1",
       "title": "Logical Relation Isomorphism",
       "cell": "CL",
       "derivation_type": "CellCrossing",
-      "derives_from": ["CC-1"],
-      "applies_to": ["CC-1"],
+      "derives_from": [
+        "CC-1"
+      ],
+      "applies_to": [
+        "CC-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 3,
       "one_sentence_summary": "Logical relations preserve scale recurrence.",
       "irreducible_claim": "Logical structure must reflect scale-preserving projections.",
-      "corollaries": ["LC-1"],
+      "corollaries": [
+        "LC-1"
+      ],
       "irreducibility_proof": "Requires simultaneous truth of scale recurrence and logical context.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:cd81f7cbf6fb1b111d34afe11f630bc6a7381b310a16faff253b75b6e9ac5fc6"
     },
     {
       "id": "LC-1",
       "title": "Logical Conceptualization of Scale",
       "cell": "LC",
       "derivation_type": "LayerFold",
-      "folds_from": ["CC-1", "CL-1"],
+      "folds_from": [
+        "CC-1",
+        "CL-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 2,
       "one_sentence_summary": "Minimal logical conceptual basis for carrying Conceptual layer forward.",
       "irreducible_claim": "Logical concepts must provide scale-preserving execution bounds.",
-      "corollaries": ["LL-1"],
+      "corollaries": [
+        "LL-1"
+      ],
       "irreducibility_proof": "Layer fold over CC-1 and CL-1.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:aba3f7e0065fca34bae40c8da25ae662d6771a7083de21e3c91f4c3a8ee8b483"
     },
     {
       "id": "LL-1",
       "title": "Logical Causal Partial Order",
       "cell": "LL",
       "derivation_type": "CellCrossing",
-      "derives_from": ["LC-1"],
-      "applies_to": ["CL-1"],
+      "derives_from": [
+        "LC-1"
+      ],
+      "applies_to": [
+        "CL-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 3,
       "one_sentence_summary": "Logical systems conserve causal partial order.",
       "irreducible_claim": "Causal order is an invariant across logical branches.",
-      "corollaries": ["PC-1"],
+      "corollaries": [
+        "PC-1"
+      ],
       "irreducibility_proof": "Crossing LC-1 and CL-1.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:5951302413fbf2f1869211ccd64a851efc1ef1203dbec9a120d6fce7f8bdec96"
     },
     {
       "id": "PC-1",
       "title": "Physical Basis of Causal Order",
       "cell": "PC",
       "derivation_type": "LayerFold",
-      "folds_from": ["LC-1", "LL-1"],
+      "folds_from": [
+        "LC-1",
+        "LL-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 2,
       "one_sentence_summary": "Physical state embodies logical causal order.",
       "irreducible_claim": "Physical substrates conserve energy and provenance.",
-      "corollaries": ["PL-1"],
+      "corollaries": [
+        "PL-1"
+      ],
       "irreducibility_proof": "Fold over Logical layer.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:8a473f5aeb165b7816b3fd8ce6e9ffcc161cbe164b5dec3fc1a1b2bdc701096a"
     },
     {
       "id": "PL-1",
       "title": "Physical Logical Bound",
       "cell": "PL",
       "derivation_type": "CellCrossing",
-      "derives_from": ["PC-1"],
-      "applies_to": ["LL-1"],
+      "derives_from": [
+        "PC-1"
+      ],
+      "applies_to": [
+        "LL-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 3,
       "one_sentence_summary": "Physical state constraints bound logical execution.",
       "irreducible_claim": "Physical substrate bounds computational execution speed.",
-      "corollaries": ["PP-1"],
+      "corollaries": [
+        "PP-1"
+      ],
       "irreducibility_proof": "Crossing PC-1 and LL-1.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:d3f99c747d52ee6bbb6cfec7100adfbd394723faae5e9b056897859f2495201a"
     },
     {
       "id": "PP-1",
       "title": "Physical Metabolic Evaluation",
       "cell": "PP",
       "derivation_type": "CellCrossing",
-      "derives_from": ["PL-1"],
-      "applies_to": ["PL-1"],
+      "derives_from": [
+        "PL-1"
+      ],
+      "applies_to": [
+        "PL-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 3,
       "one_sentence_summary": "Physical evaluation consumes metabolic energy.",
       "irreducible_claim": "Metabolic evaluation is physical sovereignty contestation.",
-      "corollaries": ["PI-1"],
+      "corollaries": [
+        "PI-1"
+      ],
       "irreducibility_proof": "Crossing PL-1 with itself.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:6606f205a49ac65abd1e2e4b21c8212760e785416c57aec54150b220da988bb3"
     },
     {
       "id": "PI-1",
       "title": "Physical Implementation Coupling",
       "cell": "PI",
       "derivation_type": "CellCrossing",
-      "derives_from": ["PP-1"],
-      "applies_to": ["PL-1"],
+      "derives_from": [
+        "PP-1"
+      ],
+      "applies_to": [
+        "PL-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 3,
       "one_sentence_summary": "Physical execution couples to implementation gates.",
       "irreducible_claim": "Implementation gates enforce physical bounds.",
-      "corollaries": ["IC-1"],
+      "corollaries": [
+        "IC-1"
+      ],
       "irreducibility_proof": "Crossing PP-1 and PL-1.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:0dd3f77679d0bbdeb167b861f29d22874d6d7adfcbca07379592476a2d62abde"
     },
     {
       "id": "IC-1",
       "title": "Implementation Conceptual Basis",
       "cell": "IC",
       "derivation_type": "LayerFold",
-      "folds_from": ["PC-1", "PL-1", "PP-1", "PI-1"],
+      "folds_from": [
+        "PC-1",
+        "PL-1",
+        "PP-1",
+        "PI-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 2,
       "one_sentence_summary": "Minimal implementation basis for carrying Physical closure forward.",
       "irreducible_claim": "Implementation concepts provide physical execution guarantees.",
-      "corollaries": ["IL-1"],
+      "corollaries": [
+        "IL-1"
+      ],
       "irreducibility_proof": "Fold over Physical layer.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:4172d7ed80bb16de07f7edb940694bd4f11b8cb06d605b6af001858062f6a54a"
     },
     {
       "id": "IL-1",
       "title": "Implementation Logical Protocol",
       "cell": "IL",
       "derivation_type": "CellCrossing",
-      "derives_from": ["IC-1"],
-      "applies_to": ["PI-1"],
+      "derives_from": [
+        "IC-1"
+      ],
+      "applies_to": [
+        "PI-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 3,
       "one_sentence_summary": "Implementation protocols enforce logical consistency.",
       "irreducible_claim": "Protocol execution preserves Zero Theater.",
-      "corollaries": ["IP-1"],
+      "corollaries": [
+        "IP-1"
+      ],
       "irreducibility_proof": "Crossing IC-1 and PI-1.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:e4ccda22fd3f6dc15fd42ed64f876b320f17399cd0f22cdd41375d2f7319fe43"
     },
     {
       "id": "IP-1",
       "title": "Implementation Physical Gate",
       "cell": "IP",
       "derivation_type": "CellCrossing",
-      "derives_from": ["IL-1"],
-      "applies_to": ["PI-1"],
+      "derives_from": [
+        "IL-1"
+      ],
+      "applies_to": [
+        "PI-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 3,
       "one_sentence_summary": "Implementation gates enforce physical bounds.",
       "irreducible_claim": "Physical gates prevent unauthorized state mutation.",
-      "corollaries": ["II-1"],
+      "corollaries": [
+        "II-1"
+      ],
       "irreducibility_proof": "Crossing IL-1 and PI-1.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:7e0876d9c1493936783b22b45b7286498d7e0d9af816f37d30bfd9d5007a3621"
     },
     {
       "id": "II-1",
       "title": "Implementation Closure Wire",
       "cell": "II",
       "derivation_type": "CellCrossing",
-      "derives_from": ["IP-1"],
-      "applies_to": ["PI-1"],
+      "derives_from": [
+        "IP-1"
+      ],
+      "applies_to": [
+        "PI-1"
+      ],
       "derivational_state": "IRREDUCIBLE",
       "epistemic_tier": 3,
       "one_sentence_summary": "Final implementation closure wire.",
       "irreducible_claim": "Implementation closure completes matrix derivation.",
       "corollaries": [],
       "irreducibility_proof": "Crossing IP-1 and PI-1.",
-      "governing_grammar_version": "C_1"
+      "governing_grammar_version": "C_1",
+      "canonical_text_digest": "sha256:45a43f967e2d2640407dea4c40db6ad717bf700417e813f06a26479f8522ff67"
     }
   ],
   "cross_receipts": [
@@ -204,7 +284,14 @@
       "target_entry_id": "CL-1",
       "justification_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "governing_grammar_version": "C_1",
-      "timestamp": "2026-08-21T14:30:00Z"
+      "timestamp": "2026-08-21T14:30:00Z",
+      "parent_witnesses": {
+        "CC-1": {
+          "expected_title": "Scale Recurrence",
+          "canonical_text_digest": "sha256:aa9196cc0cb43bb1655af182f3e39804c941ef688c3ccc6e1fad6ee0220e3606",
+          "canonicalization_version": "palimpsestus-normative-v1"
+        }
+      }
     }
   ],
   "fold_receipts": [
@@ -213,14 +300,29 @@
       "target_cell": "LC",
       "target_concept_id": "LC-1",
       "antecedent_layer": "Conceptual_Layer",
-      "minimal_support_set": ["CC-1", "CL-1"],
+      "minimal_support_set": [
+        "CC-1",
+        "CL-1"
+      ],
       "input_coverage_map": {
         "CC-1": "supported",
         "CL-1": "supported"
       },
       "justification_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "governing_grammar_version": "C_1",
-      "timestamp": "2026-08-21T14:30:00Z"
+      "timestamp": "2026-08-21T14:30:00Z",
+      "parent_witnesses": {
+        "CC-1": {
+          "expected_title": "Scale Recurrence",
+          "canonical_text_digest": "sha256:aa9196cc0cb43bb1655af182f3e39804c941ef688c3ccc6e1fad6ee0220e3606",
+          "canonicalization_version": "palimpsestus-normative-v1"
+        },
+        "CL-1": {
+          "expected_title": "Logical Relation Isomorphism",
+          "canonical_text_digest": "sha256:cd81f7cbf6fb1b111d34afe11f630bc6a7381b310a16faff253b75b6e9ac5fc6",
+          "canonicalization_version": "palimpsestus-normative-v1"
+        }
+      }
     }
   ]
 }
