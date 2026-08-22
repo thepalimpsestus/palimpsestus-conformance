@@ -75,6 +75,10 @@ def parse_markdown_corpus(spec_dir):
                                 "expected_title": exp_title.strip() if exp_title else None
                             })
                     
+            # Parse explicit Epistemic Tier if present in body
+            tier_match = re.search(r'Epistemic Tier:\s*Tier\s*([1-5])', entry_body, re.IGNORECASE)
+            epistemic_tier = int(tier_match.group(1)) if tier_match else (2 if derivation_type in ["AntecedentRoot", "LayerFold"] else 3)
+
             nodes[entry_id] = {
                 "id": entry_id,
                 "title": title,
@@ -83,15 +87,18 @@ def parse_markdown_corpus(spec_dir):
                 "parents": parents,
                 "parent_refs": parent_refs,
                 "body": entry_body,
-                "epistemic_tier": 2 if derivation_type in ["AntecedentRoot", "LayerFold"] else 3
+                "epistemic_tier": epistemic_tier,
+                "explicit_tier_declared": bool(tier_match)
             }
                 
     return nodes, files
 
 import hashlib
 
-def compute_semantic_digest(text):
-    """Computes canonicalized sha256 semantic digest of normative text, stripping formatting."""
+CANONICALIZATION_VERSION = "palimpsestus-normative-v1"
+
+def compute_canonical_text_digest(text):
+    """Computes canonicalized sha256 text digest of normative proposition text under palimpsestus-normative-v1."""
     clean = re.sub(r'[\`\*\_#\-\s]+', ' ', text).strip().lower()
     return "sha256:" + hashlib.sha256(clean.encode("utf-8")).hexdigest()
 
@@ -107,7 +114,7 @@ def validate_live_corpus(nodes):
             continue
             
         c_idx = CELL_TOPOLOGICAL_INDEX[cell]
-        node["semantic_digest"] = compute_semantic_digest(node["title"] + " " + node.get("body", ""))
+        node["canonical_text_digest"] = compute_canonical_text_digest(node["title"] + " " + node.get("body", ""))
 
         for ref in node.get("parent_refs", []):
             p_id = ref["id"]
@@ -124,7 +131,7 @@ def validate_live_corpus(nodes):
                             f"[{node_id} in {cell}] Topological Order Violation: Parent [{p_id} in {p_cell}] "
                             f"comes AFTER child in authorship sequence!"
                         )
-                # Reference Binding Integrity: Verify title match if explicit title was cited in parent reference
+                # Universal Reference Binding Integrity: Verify title match
                 if expected_title and p_node["title"]:
                     clean_expected = re.sub(r'[^\w\s]', '', expected_title).strip().lower()
                     clean_actual = re.sub(r'[^\w\s]', '', p_node["title"]).strip().lower()
@@ -134,9 +141,9 @@ def validate_live_corpus(nodes):
                             f"'{expected_title}', but target '{p_id}' actual title is '{p_node['title']}'."
                         )
             else:
-                # Reference Integrity based on reference class
+                # D05 Category Error Repair: Unresolved required parent ancestry is a HARD ERROR, not an open frontier bound
                 if ref_class in ["NormativeAncestry", "NormativeSupport"]:
-                    warnings.append(f"[{node_id}] Unresolved {ref_class} parent reference '{p_id}' in corpus.")
+                    errors.append(f"[{node_id}] Unresolved Required {ref_class} Parent Reference '{p_id}' in corpus (Missing Ancestry Warrant Violation).")
                 else:
                     warnings.append(f"[{node_id}] Unresolved {ref_class} cross-reference '{p_id}' in corpus.")
                 

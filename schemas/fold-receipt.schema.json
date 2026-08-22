@@ -57,15 +57,30 @@
     },
     "parent_witnesses": {
       "type": "object",
+      "minProperties": 1,
       "additionalProperties": {
         "type": "object",
+        "required": ["expected_title", "canonical_text_digest", "canonicalization_version"],
         "properties": {
           "expected_title": { "type": "string" },
-          "semantic_digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+          "canonical_text_digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "canonicalization_version": { "type": "string", "enum": ["palimpsestus-normative-v1"] }
         },
         "additionalProperties": false
       }
     }
   },
+  "required": [
+    "receipt_id",
+    "target_cell",
+    "target_concept_id",
+    "antecedent_layer",
+    "minimal_support_set",
+    "input_coverage_map",
+    "justification_hash",
+    "governing_grammar_version",
+    "timestamp",
+    "parent_witnesses"
+  ],
   "additionalProperties": false
 }

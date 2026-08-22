@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
 harnesses/test_co_valid_divergence_harness.py
-CR-009 Executable Test Harness: Co-Valid Divergence & Optional Reconciliation
+CR-009 Executable Reference Behavioral Model: Co-Valid Divergence & Operational Predicate Classification
 
-Tests operational predicates:
-  - Valid(A) & Valid(B)
-  - CommonContinuityDomain(A, B)
-  - NonCommutingClaims(A, B)
+Operationalizes the 5-state branch classification model using exact operational predicates:
+  CommonContinuityDomain(A, B) AND NonCommutingClaims(A, B)
+
+(Note: This harness is an Executable Reference Behavioral Model of decision semantics.)
 
 Deterministically classifies branch pairs into 5 states:
   1. IDENTICAL

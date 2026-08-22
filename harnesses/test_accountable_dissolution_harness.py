@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """
 harnesses/test_accountable_dissolution_harness.py
-CR-008 Executable Test Harness: Accountable Dissolution Lifecycle & Crash-Safety Idempotence
+CR-008 Executable Reference Behavioral Model: Accountable Dissolution Lifecycle & Crash-Safety Idempotence
 
-Tests the Guarded Dissolution State Machine:
+Models the Guarded Dissolution State Machine:
   ACTIVE -> DISSOLUTION_REQUESTED -> QUIESCING -> DISSOLUTION_COMMITTED -> CATABOLIZED
 
-Simulates process crash failures on BOTH sides of the DISSOLUTION_COMMITTED boundary
-and verifies non-reconstructibility of zeroized payloads vs CC-6 provenance preservation.
+Simulates in-memory process crash failure states on BOTH sides of the DISSOLUTION_COMMITTED boundary
+and models non-reconstructibility of zeroized payload states vs CC-6 provenance preservation.
+(Note: This harness is an Executable Reference Behavioral Model of state machine semantics.)
 """
 
 import sys

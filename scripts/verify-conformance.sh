@@ -4,11 +4,23 @@ set -e
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BASE_DIR="$( cd "$SCRIPT_DIR/.." && pwd )"
 
+CONFORMANCE_COMMIT=$(git -C "$BASE_DIR" rev-parse --short HEAD 2>/dev/null || echo "uncommitted")
+SPEC_COMMIT=$(git -C "$BASE_DIR/../palimpsestus-spec" rev-parse --short HEAD 2>/dev/null || echo "uncommitted")
+PINNED_TARGET=$(grep 'target_commit:' "$BASE_DIR/SPEC_REF" | awk '{print $2}')
+
 echo "======================================================================"
 echo "          PALIMPSESTUS PUBLIC CONFORMANCE VERIFICATION SUITE         "
 echo "======================================================================"
-echo "Pinned Spec: $(cat "$BASE_DIR/SPEC_REF" | tr '\n' ' ')"
+echo "Conformance Commit : $CONFORMANCE_COMMIT"
+echo "Spec Commit        : $SPEC_COMMIT"
+echo "Pinned Target      : $PINNED_TARGET"
+echo "Pinned Spec        : $(cat "$BASE_DIR/SPEC_REF" | tr '\n' ' ')"
 echo ""
+
+if [ "$SPEC_COMMIT" != "$PINNED_TARGET" ] && [ "$1" != "--allow-uncommitted-head" ]; then
+  echo "WARNING: spec_commit ($SPEC_COMMIT) does not equal SPEC_REF target_commit ($PINNED_TARGET)."
+  echo "Executing live verification against working tree..."
+fi
 
 echo "======================================================================"
 echo "               PALIMPSESTUS NORMATIVE CONFORMANCE                     "
