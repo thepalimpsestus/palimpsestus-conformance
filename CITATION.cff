@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you utilize this verification suite, please cite it as below."
 title: "Palimpsestus Conformance Verification Suite"
-version: "1.0.4"
+version: "1.0.5"
 authors:
   - family-names: "Weber"
     given-names: "Stephen"
