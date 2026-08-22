@@ -61,14 +61,17 @@
 
 ---
 
-## Quick Start (Standalone Execution)
+## Quick Start (Sibling Repository Execution)
+
+To run the complete verification suite including live specification corpus scanning and public crucible integrity verification, clone both sibling repositories into the same parent directory:
 
 ```bash
-# Clone repository
+# Clone sibling repositories side-by-side
+git clone https://github.com/thepalimpsestus/palimpsestus-spec.git
 git clone https://github.com/thepalimpsestus/palimpsestus-conformance.git
-cd palimpsestus-conformance
 
-# Execute complete standalone verification suite
+# Enter conformance directory and run verification suite
+cd palimpsestus-conformance
 bash scripts/verify-conformance.sh
 ```
 

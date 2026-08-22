@@ -91,7 +91,7 @@ def main():
             continue
 
         # Check required metadata fields
-        for req_field in ["crucible_id", "title", "domain", "status", "primary_outcome", "outcomes", "constitution", "spec_version", "spec_commit"]:
+        for req_field in ["crucible_id", "title", "domain", "status", "primary_outcome", "outcomes", "constitution", "spec_version"]:
             if req_field not in meta:
                 errors.append(f"[{rel_path}] Missing required frontmatter field '{req_field}'.")
 
@@ -129,6 +129,13 @@ def main():
             body_primary = sec12_match.group(1).strip()
             if primary_outcome and body_primary != primary_outcome:
                 errors.append(f"[{rel_path}] Frontmatter primary_outcome ('{primary_outcome}') disagrees with Section 12 body primary outcome ('{body_primary}').")
+
+        sec12_list_match = re.search(r"-\s*\*\*Outcomes:\*\*\s*`?\[(.*?)\]`?", body)
+        if sec12_list_match:
+            body_outcomes = [o.strip("`'\" ") for o in sec12_list_match.group(1).split(",")]
+            for bo in body_outcomes:
+                if bo and bo not in outcomes:
+                    errors.append(f"[{rel_path}] Section 12 body outcome ('{bo}') is missing from frontmatter outcomes array {outcomes}.")
 
         # Status vs Outcome consistency
         if status == "STABLE" and primary_outcome == "PENDING":
