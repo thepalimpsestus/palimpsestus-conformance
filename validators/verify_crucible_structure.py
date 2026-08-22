@@ -4,8 +4,8 @@ validators/verify_crucible_structure.py
 Palimpsestus Public Crucible Integrity Structural Validator
 
 Validates frontmatter metadata, version-generic spec coordinate pins, required template sections,
-composite outcomes, structured constitutional dependencies, and DAG isolation for all Crucibles
-in palimpsestus-spec/crucibles/.
+composite outcomes, structured constitutional dependencies, body vs frontmatter metadata agreement,
+and DAG isolation for all Crucibles in palimpsestus-spec/crucibles/.
 """
 
 import os
@@ -119,6 +119,17 @@ def main():
             if out not in VALID_OUTCOMES:
                 errors.append(f"[{rel_path}] Invalid outcome '{out}' in outcomes list. Must be one of {sorted(VALID_OUTCOMES)}.")
 
+        # Check that primary_outcome is in outcomes list
+        if primary_outcome and primary_outcome not in outcomes:
+            errors.append(f"[{rel_path}] primary_outcome '{primary_outcome}' is not included in outcomes array {outcomes}.")
+
+        # Check Body Section 12 Outcome Agreement
+        sec12_match = re.search(r"## 12\. Outcome Classification & Justification\s*\n+-\s*\*\*Primary Outcome:\*\*\s*`?([A-Z_]+)`?", body)
+        if sec12_match:
+            body_primary = sec12_match.group(1).strip()
+            if primary_outcome and body_primary != primary_outcome:
+                errors.append(f"[{rel_path}] Frontmatter primary_outcome ('{primary_outcome}') disagrees with Section 12 body primary outcome ('{body_primary}').")
+
         # Status vs Outcome consistency
         if status == "STABLE" and primary_outcome == "PENDING":
             errors.append(f"[{rel_path}] STABLE crucible cannot have primary_outcome 'PENDING'.")
@@ -142,7 +153,7 @@ def main():
             print(f"  - {err}")
         sys.exit(1)
 
-    print(f"SUCCESS: All {len(crucible_files)} Crucibles passed structural integrity & generic spec pin validation!")
+    print(f"SUCCESS: All {len(crucible_files)} Crucibles passed structural integrity, generic spec pin, and outcome agreement validation!")
 
 if __name__ == "__main__":
     main()

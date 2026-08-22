@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 dist/palimpsestus-conformance/validators/verify_corpus_conformance.py
-Live 3,269-Entry Public Corpus Structural Conformance Validator
+Live 3,269-Entry Public Corpus Topology & Ancestry Validator
 
 Parses all 16 Markdown derivation matrix files directly from palimpsestus-spec,
 extracts all authored entries, constructs the live derivation DAG, and validates
-the 8 Machine-Checkable Structural Invariants against the real public corpus.
+topological cell order, parent resolution, and acyclicity across the public corpus.
 """
 
 import sys
@@ -117,7 +117,7 @@ def validate_live_corpus(nodes):
     return errors, warnings
 
 def main():
-    parser = argparse.ArgumentParser(description="Live 3,269-Entry Public Corpus Structural Conformance Validator")
+    parser = argparse.ArgumentParser(description="Live 3,269-Entry Public Corpus Topology & Ancestry Validator")
     parser.add_argument("--spec-dir", type=str, default="../palimpsestus-spec", help="Path to palimpsestus-spec directory")
     args = parser.parse_args()
 
@@ -129,20 +129,20 @@ def main():
         sys.exit(1)
 
     print(f"Successfully parsed {len(nodes)} authored entries across {len(files)} matrix derivation files.")
-    print("Executing 8 Machine-Checkable Structural Invariant Validation...")
+    print("Executing Live Corpus Topology & Ancestry Scan...")
 
     errors, warnings = validate_live_corpus(nodes)
 
     if errors:
-        print(f"\nFAILED: {len(errors)} structural invariant violations found:")
+        print(f"\nFAILED: {len(errors)} structural topological violations found:")
         for err in errors:
             print(f"  - {err}")
         sys.exit(1)
     else:
-        print(f"\nSUCCESS: Live {len(nodes)}-entry Markdown corpus passed all structural DAG invariants!")
+        print(f"\nSUCCESS: Live {len(nodes)}-entry Markdown corpus passed all topological cell order & acyclicity checks!")
         if warnings:
             print(f"INFO: {len(warnings)} unlinked parent references noted (open frontier bounds).")
         sys.exit(0)
 
-if __name__ == "__main__":
-    main()
+    if __name__ == "__main__":
+        main()

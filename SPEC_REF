@@ -1,5 +1,5 @@
 spec_repository: palimpsestus-spec
-spec_version: v1.0.4
+spec_version: v1.0.5
 target_commit: 0a79efc
 governing_constitution: C_1
 schema_version: 1.0.0
